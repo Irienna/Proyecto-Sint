@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comidas y Síntomas</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <h1>Registro de comidas y síntomas</h1>
+
+  <section id="form-section">
+    <h2>Nuevo registro</h2>
+    <form id="entry-form">
+      <label>
+        Fecha y hora
+        <input type="datetime-local" id="date" name="date" required>
+      </label>
+
+      <label>
+        Alimentos (separados por coma)
+        <input type="text" id="foods" name="foods" placeholder="arroz, pollo, palta" required>
+      </label>
+
+      <fieldset>
+        <legend>Síntomas / sensaciones</legend>
+        <label><input type="checkbox" name="symptom-check" value="hinchazón"> Hinchazón</label>
+        <label><input type="checkbox" name="symptom-check" value="fatiga"> Fatiga</label>
+        <label><input type="checkbox" name="symptom-check" value="dolor de estómago"> Dolor de estómago</label>
+        <label><input type="checkbox" name="symptom-check" value="dolor de cabeza"> Dolor de cabeza</label>
+        <label><input type="checkbox" name="symptom-check" value="buena energía"> Buena energía</label>
+        <label><input type="checkbox" name="symptom-check" value="mal humor"> Mal humor</label>
+        <label><input type="checkbox" name="symptom-check" value="insomnio"> Insomnio</label>
+      </fieldset>
+
+      <label>
+        Otros síntomas (separados por coma)
+        <input type="text" id="extra-symptoms" name="extra-symptoms" placeholder="acidez, mareo">
+      </label>
+
+      <button type="submit">Guardar</button>
+    </form>
+  </section>
+
+  <section id="analysis-section">
+    <h2>Patrones detectados</h2>
+    <div id="analysis-output">Cargando...</div>
+  </section>
+
+  <section id="entries-section">
+    <h2>Historial</h2>
+    <table id="entries-table">
+      <thead>
+        <tr><th>Fecha</th><th>Alimentos</th><th>Síntomas</th><th></th></tr>
+      </thead>
+      <tbody id="entries-body"></tbody>
+    </table>
+  </section>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
